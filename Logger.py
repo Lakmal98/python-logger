@@ -2,29 +2,39 @@ import datetime
 
 
 class Logger():
-    def __init__(self, log_file):
+    def __init__(self, log_file='logs.log'):
         self.log_file = log_file
 
-    def log(self, message):
+    def log(self, message, prefix=''):
         with open(self.log_file, 'a') as f:
-            f.write(f'{datetime.datetime.now()} - {message}\n')
+            f.write(f"{prefix}{datetime.datetime.now()} - {message}\n")
 
-    def warn(self, message):
+    def warn(self, message, prefix=''):
         with open(self.log_file, 'a') as f:
-            f.write(f"[WARN] {str(datetime.datetime.now())}: {message}\n")
+            f.write(
+                f"{prefix}[WARN] \t\t{str(datetime.datetime.now())}: {message}\n")
 
-    def error(self, message):
+    def error(self, message, prefix=''):
         with open(self.log_file, 'a') as f:
-            f.write(f"[ERROR] {str(datetime.datetime.now())}: {message}\n")
+            f.write(
+                f"{prefix}[ERROR] \t{str(datetime.datetime.now())}: {message}\n")
 
-    def info(self, message):
+    def info(self, message, prefix=''):
         with open(self.log_file, 'a') as f:
-            f.write(f"[INFO] {str(datetime.datetime.now())}: {message}\n")
+            f.write(
+                f"{prefix}[INFO] \t\t{str(datetime.datetime.now())}: {message}\n")
 
-    def success(self, message):
+    def success(self, message, prefix=''):
         with open(self.log_file, 'a') as f:
-            f.write(f"[SUCCESS] {str(datetime.datetime.now())}: {message}\n")
+            f.write(
+                f"{prefix}[SUCCESS] \t{str(datetime.datetime.now())}: {message}\n")
 
-    def debug(self, message):
+    def debug(self, message, prefix=''):
         with open(self.log_file, 'a') as f:
-            f.write(f"[DEBUG] {str(datetime.datetime.now())}: {message}\n")
+            f.write(
+                f"{prefix}[DEBUG] \t{str(datetime.datetime.now())}: {message}\n")
+
+    def report(self, message, prefix=''):
+        with open(self.log_file, 'a') as f:
+            f.write(
+                f"{prefix}[REPORT] \t{str(datetime.datetime.now())}: {message}\n")
